@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Header.css';
 
-function Header()
+function Header(props)
 {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ function Header()
 			<div id='lm'>
 				<div>
 					<div className="logo"><img src="/shop.png" id='logo' /></div>
-					<div id='pagename'><b>Computer shop</b></div>
+					<div id='pagename'><b>{props.name}</b></div>
 				</div>
 				{loading ? (
 					<span id='lau'>Загрузка...</span>

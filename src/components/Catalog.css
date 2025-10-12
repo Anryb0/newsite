@@ -1,0 +1,32 @@
+#elements {
+	width: 90%;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	display: grid;
+	justify-content: space-around;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 320px));
+	grid-gap: 20px;
+}
+.element img {
+	width: auto;
+    max-width: 290px;
+    height: 210px;
+    border-radius: 15px;
+}
+.element {
+	border-radius: 15px;
+	text-align: center;
+	padding: 5px;
+	color: black;
+	text-decoration: none;
+	transition: transform 0.2s;
+	background: rgb(255 255 255 / 20%);
+	backdrop-filter: blur(1px); 
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+.element:hover {
+    transform: scale(1.02);
+}
