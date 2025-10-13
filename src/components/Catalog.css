@@ -29,4 +29,8 @@
 }
 .element:hover {
     transform: scale(1.02);
+	cursor: pointer;
+}
+.catname {
+	margin: 5px 0;
 }

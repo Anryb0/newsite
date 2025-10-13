@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from './components/Header.jsx'
 import Catalog from './components/Catalog.jsx'
+import Footer from './components/Footer.jsx'
 
 function App() {	
   return (
@@ -9,6 +10,7 @@ function App() {
 		<main>
 			<Catalog />
 		</main>
+		<Footer />
     </div>
   );
 }
