@@ -34,6 +34,9 @@ function Catalog()
 		setSelected(id);
 		setShowmenu(true);
 	}
+	function closemodal(){
+		setShowmenu(false);
+	}
 	return (
 		<>
 			<div id='elements'>
@@ -45,7 +48,7 @@ function Catalog()
 				)))	
 			}
 			</div>
-			{showmenu && (<Subcat catid={selected}/>)}
+			{showmenu && (<Subcat catid={selected} closemodal={closemodal}/>)}
 		</>
 	);
 }

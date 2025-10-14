@@ -1,0 +1,36 @@
+#subcatlist {
+	width: 90%;
+	margin: 5px auto;
+}
+#subcatlist a {
+	width: 95%;
+    background: rgb(255 255 255 / 20%);
+    backdrop-filter: blur(1px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 50px;
+    display: inline-block;
+    padding: 5px;
+    line-height: 50px;
+	transition: transform 0.2s;
+	margin-bottom: 5px;
+}
+#subcatlist a:hover {
+	text-decoration: none;
+	transform: scale(1.02);
+	cursor: pointer;
+	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
+	border: 2px solid rgba(0,255,150,0.4);
+}
+.subcatname {
+	margin: 0;
+	font-weight: bold;
+}
+.subcatpic {
+	margin: 0 10px 0 5px;
+	width: 50px;
+}
+.scn {
+	vertical-align: text-bottom;
+}

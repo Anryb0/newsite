@@ -5,7 +5,6 @@ function Subcat(props){
 	const [loading,setLoading] = useState(true);
 	const [subcat,setSubcat] = useState([]);
 	const [catname,setCatname] = useState('');
-	
 	useEffect(() => {
 		let xhr = new XMLHttpRequest();
 		let formData = new FormData();
@@ -40,20 +39,26 @@ function Subcat(props){
 			{
 				loading ? (
 					<div id='modal'>
-						<h2>Загрузка...</h2>
+						<div id='modal-el'>
+							<h2>Загрузка...<span id='closebutton' onClick={() => {props.closemodal()}}>×</span></h2>
+						</div>
 					</div>
 				) : subcat && subcat.length > 0 ? (
 					<div id='modal'>
-						<h2>{catname}</h2>
-						<div id='subcatlist'>
-							{subcat.map(item => (
-								<div id={'l' + item.id}><p>{item.name}</p></div>
-							))}
+						<div id='modal-el'>
+							<h2>{catname}<span id='closebutton' onClick={() => {props.closemodal()}}>×</span></h2>
+							<div id='subcatlist'>
+								{subcat.map(item => (
+									<a id={'l' + item.id}><p className='subcatname'><img src={'subcatpic/' + item.photo_url+'.png'} className='subcatpic'/><span className='scn'>{item.name}</span></p></a>
+								))}
+							</div>
 						</div>
 					</div>
 				) : (
 					<div id='modal'>
-						<h2>Нет данных</h2>
+						<div id='modal-el'>
+							<h2>Нет данных<span id='closebutton' onClick={() => {props.closemodal()}}>×</span></h2>
+						</div>
 					</div>
 				)
 			}

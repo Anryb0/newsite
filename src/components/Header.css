@@ -1,15 +1,14 @@
 #header {
-	background: rgb(255 255 255 / 20%);
+	background: rgb(255,255,255,0.12);
 	backdrop-filter: blur(1px); 
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(255,255,255,0.2);
 	height: 55px;
 }
 #lm {
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 260px 1fr;
-	max-width: 1050px;
+	max-width: 1150px;
 }
 #logo {
 	height: 55px;
@@ -26,6 +25,7 @@
 #pagename {
 	line-height: 55px;
     vertical-align: bottom;
+	font-size: 17px;
 }
 #lau {
 	text-align: right;

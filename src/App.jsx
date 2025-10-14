@@ -8,6 +8,7 @@ function App() {
     <div className="todoapp stack-large">
 		<Header name='Computer shop'/>
 		<main>
+			<h1>Каталог</h1>
 			<Catalog />
 		</main>
 		<Footer />
