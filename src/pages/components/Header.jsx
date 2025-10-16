@@ -35,11 +35,17 @@ function Header(props)
 					<div id='pagename'><b>{props.name}</b></div>
 				</div>
 				{loading ? (
-					<span id='lau'>Загрузка...</span>
+					<div id='l'>
+						<span id='lau'>Загрузка...</span>
+					</div>
 				) : user ? (
-					<a id='lau' href="/profile">{user.username}</a>
+					<div id='l'>
+						<a id='lau' href="/profile">{user.username}</a>
+					</div>
 				) : (
-					<a id='lau' href="/register">Регистрация / Вход</a>
+					<div id='l'>
+						<a id='lau' href="/register">Регистрация / Вход</a>
+					</div>
 				)}
 			</div>
 		</div>

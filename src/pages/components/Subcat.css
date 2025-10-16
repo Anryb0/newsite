@@ -34,3 +34,11 @@
 .scn {
 	vertical-align: text-bottom;
 }
+.catdescr {
+	width: 85%;
+	margin: 15px auto;
+	text-align: justify;
+	font-weight: bold;
+	color: #474747;
+	font-size: 13px;
+}

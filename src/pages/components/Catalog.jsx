@@ -6,8 +6,12 @@ function Catalog()
 {
 	const [loading, setLoading] = useState(true);
 	const [categories, setCategories] = useState([]);
+	const [subcategories, setSubcategories] = useState([]);
 	const [showmenu, setShowmenu] = useState(false);
 	const [selected, setSelected] = useState(null);
+	const [selectedname, setSelectedname] = useState(null);
+	const [selecteddescr, setSelecteddescr] = useState(null);
+	const [closing, setClosing] = useState(false);
 	useEffect(() => {
 		let xhr = new XMLHttpRequest;
 		xhr.open('POST','http://94.183.234.114/server/getcatalog.php')
@@ -18,6 +22,7 @@ function Catalog()
 				let response = JSON.parse(xhr.responseText);
 				if(response.success){
 					setCategories(response.data);
+					setSubcategories(response.data1);
 				}
 				else{
 					console.log('ошибка');
@@ -30,25 +35,31 @@ function Catalog()
 		}
 		
 	},[]);
-	function openmodal(id){
+	function openmodal(id,name,descr){
 		setSelected(id);
+		setSelectedname(name);
+		setSelecteddescr(descr);
 		setShowmenu(true);
 	}
 	function closemodal(){
-		setShowmenu(false);
+		setClosing(true);
+		setTimeout(() => {
+			setShowmenu(false);
+			setClosing(false);
+		}, 300);
 	}
 	return (
 		<>
 			<div id='elements'>
 			{ 	loading ? (
-					<p>Загрузка...</p>
+					<div className='spinner'></div>
 				) : (
 					categories.map(item =>(
-						<a className='element' onClick={() => openmodal(item.id)} key={item.id} id={'e' + item.id}><img src={'catpic/' + item.photo_url + '.png'} /><p className="catname"><b>{item.name}</b></p></a>
+						<a className='element' onClick={() => openmodal(item.id, item.name, item.descr)} key={item.id} id={'e' + item.id}><img src={'catpic/' + item.photo_url + '.png'} /><p className="catname"><b>{item.name}</b></p></a>
 				)))	
 			}
 			</div>
-			{showmenu && (<Subcat catid={selected} closemodal={closemodal}/>)}
+			{showmenu && (<Subcat catid={selected} catname={selectedname} subcategories={subcategories} closemodal={closemodal} closing={closing} descr={selecteddescr}/>)}
 		</>
 	);
 }

@@ -1,18 +1,15 @@
-import { useState } from "react";
-import Header from './components/Header.jsx'
-import Catalog from './components/Catalog.jsx'
-import Footer from './components/Footer.jsx'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Register from './pages/Register.jsx';
 
 function App() {	
   return (
-    <div className="todoapp stack-large">
-		<Header name='Computer shop'/>
-		<main>
-			<h1>Каталог</h1>
-			<Catalog />
-		</main>
-		<Footer />
-    </div>
+    <Router>
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/register" element={<Register />} />
+		</Routes>
+	</Router>
   );
 }
 
