@@ -92,3 +92,27 @@ h1 {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+input {
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(1px); 
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 9px;
+	padding: 3px 5px;
+	transition: ; 
+	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+}
+input:hover, input:focus {
+	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
+	border: 2px solid rgba(0,255,150,0.4);
+	outline: none;
+}
+.but {
+	font-weight: bold;
+	font-size: 14px;
+	background: rgba(0,255,150,0.2);
+	padding: 4px 10px;
+}
+h3 {
+	margin: 10px;
+}

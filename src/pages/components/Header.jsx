@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header(props)
 {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [nonbut, setnonbut] = useState(props.nonbut);
 	useEffect(() => {
 		let user;
 		let xhr = new XMLHttpRequest();
@@ -34,17 +36,21 @@ function Header(props)
 					<div className="logo"><img src="/shop.png" id='logo' /></div>
 					<div id='pagename'><b>{props.name}</b></div>
 				</div>
-				{loading ? (
+				{nonbut ? (
+					<div id='l'>
+					</div>
+				) :
+				loading ? (
 					<div id='l'>
 						<span id='lau'>Загрузка...</span>
 					</div>
 				) : user ? (
 					<div id='l'>
-						<a id='lau' href="/profile">{user.username}</a>
+						<Link id='lau' to="/profile">{user.username}</Link>
 					</div>
-				) : (
+				) :	(
 					<div id='l'>
-						<a id='lau' href="/register">Регистрация / Вход</a>
+						<Link id='lau' to="/register">Регистрация / Вход</Link>
 					</div>
 				)}
 			</div>
