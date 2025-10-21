@@ -7,7 +7,7 @@ import Description from './components/Description.jsx'
 function Home() {	
   return (
     <div className="todoapp stack-large">
-		<Header name='Computer shop'/>
+		<Header name='Computer shop' search={true}/>
 		<main>
 			<h1>Каталог</h1>
 			<Catalog />

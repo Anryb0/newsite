@@ -7,7 +7,7 @@
 #lm {
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: 260px 1fr;
+	grid-template-columns: 260px 1fr 260px;;
 	max-width: 1150px;
 }
 #logo {
@@ -36,7 +36,7 @@
 	height: 20px;
 	padding: 5px;
 	margin: auto 5px;
-	transition: transform 0.2s;
+	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s; 
 	display: inline-block;
     vertical-align: middle;
 	font-weight: bold;
@@ -47,7 +47,19 @@
 }
 #lau:hover{
 	transform: scale(1.04);
-	transition: transform 0.2s;
 	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
 	border: 2px solid rgba(0,255,150,0.4);
 }
+#search {
+	text-align: center;
+	margin-top: 12px;
+}
+#s2 {
+	margin-left: 10px;
+}
+#s2:hover {
+	transform: scale(1.04);
+}
+#s1, #s2 {
+	padding: 5px 10px;
+} 

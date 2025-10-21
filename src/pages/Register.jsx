@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import './Register.css'
@@ -6,7 +7,7 @@ import './Register.css'
 function Register() {	
 	const [logininfo,setLogininfo] = useState({llogin:'',lpass:''});
 	const [registerinfo,setRegisterinfo] = useState({rlogin:'',rpass:'',passcheck:''});
-	
+	const navigate = useNavigate();
 	const loginch = (e) => {
 		const {name, value} = e.target;
 		setLogininfo(prev => ({
@@ -33,7 +34,7 @@ function Register() {
 			if(xhr.status == 200){
 				let response = JSON.parse(xhr.responseText);
 				if(response.success){
-					console.log('успех')
+					navigate('/');
 				}
 				else{
 					console.log(response.message);

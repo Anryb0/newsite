@@ -7,6 +7,8 @@ function Header(props)
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [nonbut, setnonbut] = useState(props.nonbut);
+	const [search, setsearch] = useState(props.search);
+	
 	useEffect(() => {
 		let user;
 		let xhr = new XMLHttpRequest();
@@ -14,9 +16,9 @@ function Header(props)
 		xhr.send();
 		xhr.onload = function() {
 			if (xhr.status == 200) {
-				let responce = JSON.parse(xhr.responseText);
-				if (responce.loggedin){
-					setUser(responce);
+				let response = JSON.parse(xhr.responseText);
+				if (response.loggedin){
+					setUser(response);
 				}
 				else {
 					setUser(null);
@@ -36,6 +38,18 @@ function Header(props)
 					<div className="logo"><img src="/shop.png" id='logo' /></div>
 					<div id='pagename'><b>{props.name}</b></div>
 				</div>
+				{
+					search ? (
+						<div id='search'>
+							<form>
+								<input type='text' placeholder='Поиск' id='s1'></input>
+								<input type='submit' value='Искать' className='but' id='s2'></input>
+							</form>
+						</div>
+					) : (
+						<div></div>
+					)
+				}
 				{nonbut ? (
 					<div id='l'>
 					</div>
@@ -46,7 +60,7 @@ function Header(props)
 					</div>
 				) : user ? (
 					<div id='l'>
-						<Link id='lau' to="/profile">{user.username}</Link>
+						<Link id='lau' to="/profile">{user.name}</Link>
 					</div>
 				) :	(
 					<div id='l'>

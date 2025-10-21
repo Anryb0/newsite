@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Subcat.css'
+import { Link } from 'react-router-dom';
 
 function Subcat(props){
 	const [vsubcategories, setVsubcategories] = useState([]);
@@ -37,7 +38,7 @@ function Subcat(props){
 							<p className='catdescr'>{props.descr}</p>
 							<div id='subcatlist'>
 								{vsubcategories.map(item => (
-									<a id={'l' + item.id} key={item.id}><p className='subcatname'><img src={'subcatpic/' + item.photo_url+'.png'} className='subcatpic'/><span className='scn'>{item.name}</span></p></a>
+									<Link id={'l' + item.id} to={'/shop?c=' + item.id} key={item.id}><p className='subcatname'><img src={'subcatpic/' + item.photo_url+'.png'} className='subcatpic'/><span className='scn'>{item.name}</span></p></Link>
 								))}
 							</div>
 						</div>
