@@ -13,6 +13,7 @@
 	backdrop-filter: blur(1px); 
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	animation: modalIn 0.35s forwards;
 }
 #l1 {
     margin-right: 10px;

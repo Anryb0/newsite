@@ -48,12 +48,12 @@ a:hover {
 	align-items: center;
     align-content: center;
     justify-content: center;
-	backdrop-filter: blur(4px);
+	backdrop-filter: blur(2px);
 }
 #modal-el {
 	background-color: rgba(255, 255, 255, 0.62);
     padding: 15px;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.2);
     width: 60%;
 	max-width: 500px;
 	min-width: 300px;
@@ -62,6 +62,10 @@ a:hover {
     height: auto;
 	text-align: left;
 	display: block;
+}
+#modal-el p {
+	margin: 5px auto;
+	width: 96%;
 }
 #closebutton {
 	float: right;
@@ -76,6 +80,9 @@ h1 {
 	text-align: center;
 	font-weight: bold;
 	font-size: 20px;
+}
+.modal-out{
+	animation: modalOut 0.25s forwards; 
 }
 #modal.modal-out{
 	animation: modalOut 0.25s forwards; 
@@ -93,7 +100,7 @@ h1 {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-input, .buy {
+input, .buy, button {
 	background: rgba(255, 255, 255, 0.2);
 	backdrop-filter: blur(1px); 
 	border: 2px solid rgba(255, 255, 255, 0.3);
@@ -102,7 +109,14 @@ input, .buy {
 	padding: 3px 5px;
 	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s; 
 }
-input:hover, input:focus, .buy:hover {
+button {
+	background: rgba(0,255,150,0.2);
+}
+button:hover, #s2:hover{
+	transform: scale(1.02);
+	cursor: pointer;
+}
+input:hover, input:focus, .buy:hover, button:hover {
 	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
 	border: 2px solid rgba(0,255,150,0.4);
 	outline: none;
@@ -118,4 +132,8 @@ input:hover, input:focus, .buy:hover {
 }
 h3 {
 	margin: 10px;
+	font-size: 20px;
+}
+#modal-el.error {
+	background: rgba(255, 92, 92, 0.16);
 }

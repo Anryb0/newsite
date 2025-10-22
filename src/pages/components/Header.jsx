@@ -34,10 +34,10 @@ function Header(props)
 	return (
 		<div id='header'>
 			<div id='lm'>
-				<div>
+				<Link to='/'>
 					<div className="logo"><img src="/shop.png" id='logo' /></div>
 					<div id='pagename'><b>{props.name}</b></div>
-				</div>
+				</Link>
 				{
 					search ? (
 						<div id='search'>

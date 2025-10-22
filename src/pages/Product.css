@@ -1,0 +1,63 @@
+.fakelink:hover{
+	text-decoration: underline;
+	cursor: pointer;
+	color: grey;
+}
+.fakelink {
+	color: #333;
+}
+#prodname, #price, #buybut {
+	font-size: 20px;
+	font-weight: bold;
+}
+#prodimg {
+	width: auto;
+	max-width: 500px;
+	height: 400px;
+}
+#prodcart, #prodprice, #secondline {
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(1px); 
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 9px;
+	padding: 10px;
+	text-align: center;
+	animation: modalIn 0.35s forwards;
+}
+#secondline {
+	text-align: left;
+	margin-top: 20px;
+}
+#prodcart {
+	width: 550px;
+}
+#prodcart p {
+	margin: 10px auto;
+	width: 95%;
+	text-align: left;
+}
+#prodprice p {
+	margin: 10px;
+	font-weight: bold
+}
+#prodgrid {
+	width: 90%;
+	margin: 5px auto;
+}
+@keyframes modalIn {
+    0% { opacity: 0;
+		transform: scale(0.9);
+	}
+    100%{ opacity: 1; 
+	transform: scale(1);}
+}
+#firstline {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+#buybut {
+	width: 50%;
+	
+}

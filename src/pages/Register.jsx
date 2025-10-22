@@ -2,11 +2,15 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
+import Erwin from './components/Erwin.jsx'
 import './Register.css'
 
 function Register() {	
 	const [logininfo,setLogininfo] = useState({llogin:'',lpass:''});
 	const [registerinfo,setRegisterinfo] = useState({rlogin:'',rpass:'',passcheck:''});
+	const [show,setShow] = useState(false);
+	const [error,setError] = useState('');
+	const [closing,setClosing] = useState(false);
 	const navigate = useNavigate();
 	const loginch = (e) => {
 		const {name, value} = e.target;
@@ -36,12 +40,12 @@ function Register() {
 				if(response.success){
 					navigate('/');
 				}
-				else{
-					console.log(response.message);
+				else {
+					openmodal(response.message);
 				}
 			}
 			else{
-				console.log('Ошибка ', xhr.status);
+				openmodal('Ошибка ', xhr.status);
 			}
 		}
 	}
@@ -59,20 +63,36 @@ function Register() {
 			if(xhr.status == 200){
 				let response = JSON.parse(xhr.responseText);
 				if(response.success == false){
-					console.log(response.message)
+					openmodal(response.message);
 				}
 				else{
-					console.log('Вы зарегистрированы')
+					navigate('/');
 				}
 			}
 			else {
-				console.log('Ошибка ', xhr.status);
+				openmodal('Ошибка ', xhr.status);
 			}
 		}
+	}
+	function closemodal() {
+		setClosing(true);
+		setTimeout(() => {
+			setShow(false);
+			setClosing(false);
+		}, 300);
+	}
+	function openmodal(t){
+		setError(t);
+		setShow(true);
 	}
   return (
     <div className="todoapp stack-large">
 		<Header name='Computer shop' nonbut={true}/>
+			{
+				show && (
+					<Erwin text={error} closemodal={closemodal} closing={closing}/>
+				)
+			}
 			<div id='maingrid'>
                 <div></div>
                 <div id='l1'>
