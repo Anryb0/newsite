@@ -9,6 +9,7 @@ function Shop() {
 	const [products, setProducts] = useState(null);
 	const [name, setName] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [props, setProps] = useState(null);
 	const location = useLocation();
 	const queryParams = new URLSearchParams(location.search);
 	const cat = queryParams.get('c');
@@ -26,6 +27,11 @@ function Shop() {
 						setProducts([response.data]);
 					} else{
 					setProducts(response.data);
+					}
+					if(!Array.isArray(response.allprops)){
+						setProps([response.allprops]);
+					} else {
+						setProps(response.allprops);
 					}
 					setName(response.name);
 				}
@@ -53,9 +59,23 @@ function Shop() {
 					<>
 						<p id='toptext'><span id='cn'>{name} </span><span id='q'>{products.length}</span></p>
 						<div id='elements'>
-							{products.map(item => (
-								<Link to={'/product?art=' + item.id} key={item.id} className='element prod'><img className='prodimg' src={'./prodimg/' + item.photo_url + '.png'} /><p className='prodname'>{item.name}</p></Link>
-							))}
+							{products.map(item => {
+								let pstr = '';
+								props.forEach((i) => {
+									if(i.id == item.id){pstr = i.str}
+								})
+								return (
+									<Link to={'/product?art=' + item.id} key={item.id} className='element prod'>
+										<p className='prodname'>{item.name}</p>
+										<img className='prodimg' src={'./prodimg/' + item.photo_url + '.png'} alt={item.name} />
+										<p className='prodprops'>{pstr}</p>
+										<p className='prodprice'>
+											<span id='pp'>{item.price} RUB </span>
+											<button className='buy'>Купить</button>
+										</p>
+									</Link>
+								);
+							})}
 						</div>
 					</>
 				)

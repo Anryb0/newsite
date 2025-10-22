@@ -11,6 +11,7 @@ body {
 main {
 	margin: 0 auto;
 	max-width: 1050px;
+	width: 95%;
 }
 @keyframes modalIn {
     0% { opacity: 0;
@@ -92,7 +93,7 @@ h1 {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-input {
+input, .buy {
 	background: rgba(255, 255, 255, 0.2);
 	backdrop-filter: blur(1px); 
 	border: 2px solid rgba(255, 255, 255, 0.3);
@@ -101,16 +102,19 @@ input {
 	padding: 3px 5px;
 	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s; 
 }
-input:hover, input:focus {
+input:hover, input:focus, .buy:hover {
 	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
 	border: 2px solid rgba(0,255,150,0.4);
 	outline: none;
 }
-.but {
+.but, .buy {
 	font-weight: bold;
 	font-size: 14px;
 	background: rgba(0,255,150,0.2);
 	padding: 4px 10px;
+}
+.buy {
+	padding: 4px 30px;
 }
 h3 {
 	margin: 10px;

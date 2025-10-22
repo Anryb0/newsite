@@ -29,9 +29,9 @@
 }
 #lau {
 	width: auto;
-	background: rgb(255,255,255,0.12);
+	background: rgb(0,255,150,0.2);
 	backdrop-filter: blur(1px); 
-	border: 1px solid rgba(255,255,255,0.2); 
+	border: 2px solid rgba(255,255,255,0.2); 
 	border-radius: 10px;
 	height: 20px;
 	padding: 5px;
@@ -40,6 +40,7 @@
 	display: inline-block;
     vertical-align: middle;
 	font-weight: bold;
+	color: black;
 }
 #l {
 	display: flex;
@@ -49,6 +50,7 @@
 	transform: scale(1.04);
 	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
 	border: 2px solid rgba(0,255,150,0.4);
+	text-decoration: none;
 }
 #search {
 	text-align: center;
