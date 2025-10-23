@@ -137,3 +137,9 @@ h3 {
 #modal-el.error {
 	background: rgba(255, 92, 92, 0.16);
 }
+#toback {
+	margin: 10px;
+}
+#c3 {
+	text-align: center;
+}

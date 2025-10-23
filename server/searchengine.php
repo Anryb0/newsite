@@ -1,11 +1,10 @@
-<?php
-	if(!isset($_POST['cat'])){
+<?php 
+	if(!isset($_POST['q'])){
 		echo json_encode(['success' => false]);
 	}
 	include 'connect.php';
-	$cat = $_POST['cat'];
-	$stmt = $conn->prepare("SELECT * from shop_goods where subcat = ?");
-	$stmt->bind_param("i", $cat);
+	$stmt = $conn->prepare('select * from shop_goods where name like ?');
+	$stmt->bind_param('s',$_POST['q']);
 	$stmt->execute();
 	$result = $stmt->get_result();
 	$data = [];
@@ -14,7 +13,7 @@
 		$data[] = [
 			'id' => $row['id'],
 			'name' => $row['name'],
-			'price' => $row['price'],
+			'price' =>$row['price'],
 			'descr' => $row['descr'],
 			'photo_url' => $row['photo_url']
 		];
@@ -28,15 +27,8 @@
 		}
 		$propn = substr($prop, 0, -2);
 		$allprops[] = ['id' => $row['id'], 'str'=>$propn];
+		$stmt0->close();
 	}
-	$stmt->close();
-	$stmt = $conn->prepare("SELECT name from shop_subcat where id = ?");
-	$stmt->bind_param("i", $cat);
-	$stmt->execute();
-	$result = $stmt->get_result();
-	$row = $result->fetch_assoc();
-	$name = $row['name'];
-	$stmt->close();
 	$conn->close();
-	echo json_encode(['success' => true,'data'=>$data, 'name'=>$name, 'allprops'=>$allprops]);
+	echo json_encode(['success' => true,'data'=>$data, 'allprops'=>$allprops]);
 ?>

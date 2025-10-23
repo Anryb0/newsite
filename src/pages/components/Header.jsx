@@ -41,8 +41,8 @@ function Header(props)
 				{
 					search ? (
 						<div id='search'>
-							<form>
-								<input type='text' placeholder='Поиск' id='s1'></input>
+							<form action='/search'>
+								<input type='text' placeholder='Поиск' id='s1' name='q'></input>
 								<input type='submit' value='Искать' className='but' id='s2'></input>
 							</form>
 						</div>
