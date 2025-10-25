@@ -27,7 +27,7 @@
     vertical-align: bottom;
 	font-size: 17px;
 }
-#lau {
+.lau {
 	width: auto;
 	background: rgb(0,255,150,0.2);
 	backdrop-filter: blur(1px); 

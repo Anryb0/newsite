@@ -56,15 +56,16 @@ function Header(props)
 				) :
 				loading ? (
 					<div id='l'>
-						<span id='lau'>Загрузка...</span>
+						<span className='lau'>Загрузка...</span>
 					</div>
 				) : user ? (
 					<div id='l'>
-						<Link id='lau' to="/profile">{user.name}</Link>
+						<Link className='lau' to="/cart">Корзина</Link>
+						<Link className='lau' to="/profile">{user.name}</Link>
 					</div>
 				) :	(
 					<div id='l'>
-						<Link id='lau' to="/register">Регистрация / Вход</Link>
+						<Link className='lau' to="/register">Регистрация / Вход</Link>
 					</div>
 				)}
 			</div>

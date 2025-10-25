@@ -37,6 +37,25 @@
 	$row = $result->fetch_assoc();
 	$name = $row['name'];
 	$stmt->close();
-	$conn->close();
-	echo json_encode(['success' => true,'data'=>$data, 'name'=>$name, 'allprops'=>$allprops]);
+	if(!isset($_SESSION['id'])){
+		$conn->close();
+		echo json_encode(['success' => true,'data'=>$data, 'name'=>$name, 'allprops'=>$allprops]);
+	} 
+	else{
+		$stmt = $conn->prepare('select c.product_id, c.q, g.name, g.price, g.photo_url from shop_cart c left join shop_goods g ON c.product_id = g.id where c.order_id is null and c.user_id = ?');
+		$stmt->bind_param('i',$_SESSION['id']);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$cart = [];
+		while($row = $result->fetch_assoc()){
+			$cart[] = [
+				'product_id' => $row['product_id'],
+				'q' => $row['q'],
+				'name' => $row['name'],
+				'price' => $row['price'],
+				'photo_url' => $row['photo_url']
+			];
+		}
+		echo json_encode(['success' => true,'data'=>$data, 'name'=>$name, 'allprops'=>$allprops, 'cart'=>$cart]);
+	}
 ?>

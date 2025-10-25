@@ -5,6 +5,7 @@ import Shop from './pages/Shop.jsx';
 import Profile from './pages/Profile.jsx';
 import Product from './pages/Product.jsx';
 import Search from './pages/Search.jsx';
+import Cart from './pages/Cart.jsx';
 
 function App() {	
   return (
@@ -16,6 +17,7 @@ function App() {
 			<Route path="/profile" element={<Profile />} />
 			<Route path="/search" element={<Search />} />
 			<Route path="/product" element={<Product />} />
+			<Route path="/cart" element={<Cart />} />
 		</Routes>
 	</Router>
   );

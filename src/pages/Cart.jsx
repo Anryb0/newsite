@@ -3,14 +3,15 @@ import { useLocation, Link, useNavigate } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Erwin from './components/Erwin.jsx';
-import './components/Cart.css';
+import './Cart.css';
 
 function Cart(){
-	const[products.setProducts] = useState(null);
+	const[products,setProducts] = useState([]);
 	const[user,getUser] = useState(null);
 	const[loading,setLoading] = useState(true);
 	const[show,setShow] = useState(false);
 	const[closing,setClosing] = useState(false);
+	const[no,setNo] = useState(false);
 	const[error,setError] = useState('');
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -26,6 +27,7 @@ function Cart(){
 		setError(t);
 		setShow(true);
 	}
+
 	useEffect(() => {
 		let xhr = new XMLHttpRequest;
 		xhr.open('POST','http://94.183.234.114/server/getuser.php');
@@ -43,11 +45,19 @@ function Cart(){
 					xhr2.onload = function (){
 						if(xhr2.status == 200){
 							let response2 = JSON.parse(xhr2.responseText);
+							
 							if(response2.success){
-								setProducts(response2.data)
+								if(response2.data.length === 0){
+									setNo(true);
+									openmodal('Ваша корзина пока пуста =(');
+								}
+								else{
+									setProducts(response2.data);
+									setNo(false); 
+								}
 							}
 							else{
-								openmodal(response2.message)
+								openmodal(response2.message);
 							}
 						}
 						else{
@@ -59,24 +69,41 @@ function Cart(){
 			else{
 				openmodal('Ошибка ' + xhr.status);
 			}
+			setLoading(false);
 		}
-	}, [user])
+	}, [user, navigate])
+
 	return (
 		<>
 			<Header name='Computer shop' search={true}/>
-			{
-				show && (
-					<Erwin text={error} closemodal={closemodal} closing={closing}/>
-				)
-			}
-				<main>
-				{
-					
-				}
-				</main>
+			{show && (
+				<Erwin text={error} closemodal={closemodal} closing={closing}/>
+			)}
+			<main>
+				{loading ? (
+					<div className='spinner'></div>
+				) : no ? (
+					<p id='c3'><Link to='../' id='toback' className='buy'>На главную</Link></p>
+				) : products.length > 0 ? (
+					<>
+					<p id='toptext'>Корзина<span id='q'>{products.length}</span></p>
+					<div id='cartelements'>
+						{products.map((item) => (
+							<div className='cartelement' key={item.id}>
+								<img src={'prodimg/' + item.photo_url + '.png'} alt={item.name}/>
+								<span className='cartname'>{item.name}</span>
+								<span className='cartprice'>{item.price}</span>
+							</div>
+						))}
+					</div>
+					</>
+				) : (
+					<div>Нет товаров в корзине</div>
+				)}
+			</main>
 			<Footer />
 		</>
 	)
 }
 
-export default cart;
+export default Cart;

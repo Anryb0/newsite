@@ -129,6 +129,7 @@ input:hover, input:focus, .buy:hover, button:hover {
 }
 .buy {
 	padding: 4px 30px;
+	margin-right: 5px;
 }
 h3 {
 	margin: 10px;
