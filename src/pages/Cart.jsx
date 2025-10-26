@@ -27,6 +27,14 @@ function Cart(){
 		setError(t);
 		setShow(true);
 	}
+	
+	function calculatesum(data){
+		let sum = 0;
+		data.forEach((item) => {
+			sum += item.price;
+		})
+		return sum;
+	}
 
 	useEffect(() => {
 		let xhr = new XMLHttpRequest;
@@ -75,7 +83,7 @@ function Cart(){
 
 	return (
 		<>
-			<Header name='Computer shop' search={true}/>
+			<Header name='Computer shop' search={true} nocart={true}/>
 			{show && (
 				<Erwin text={error} closemodal={closemodal} closing={closing}/>
 			)}
@@ -86,16 +94,17 @@ function Cart(){
 					<p id='c3'><Link to='../' id='toback' className='buy'>На главную</Link></p>
 				) : products.length > 0 ? (
 					<>
-					<p id='toptext'>Корзина<span id='q'>{products.length}</span></p>
+					<p id='toptext'>Корзина <span id='q'>{products.length}</span></p>
 					<div id='cartelements'>
 						{products.map((item) => (
 							<div className='cartelement' key={item.id}>
-								<img src={'prodimg/' + item.photo_url + '.png'} alt={item.name}/>
+								<img src={'prodimg/' + item.photo_url + '.png'} alt={item.name} className='cartpic'/>
 								<span className='cartname'>{item.name}</span>
-								<span className='cartprice'>{item.price}</span>
+								<span className='cartprice'>{item.price} RUB</span>
 							</div>
 						))}
 					</div>
+					<p>Итого: {calculatesum(products)} RUB</p>
 					</>
 				) : (
 					<div>Нет товаров в корзине</div>

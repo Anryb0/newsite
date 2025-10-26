@@ -1,0 +1,32 @@
+#cartelements{
+	display: grid;
+	grid-gap: 5px;
+	width: 95%;
+	margin: 5px auto;
+	padding: 5px;
+}
+.cartelement{
+	width: 95%;
+    background: rgb(255 255 255 / 20%);
+    backdrop-filter: blur(1px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 50px;
+    display: inline-block;
+    padding: 5px;
+    line-height: 50px;
+	animation: modalIn 0.35s forwards;
+	margin: 5px auto;
+	font-weight: bold;
+}
+.cartpic {
+	margin: 0 10px 0 5px;
+	width: 50px;
+}
+.cartprice {
+	float: right;
+}
+.cartname{
+	vertical-align: text-bottom;
+}
