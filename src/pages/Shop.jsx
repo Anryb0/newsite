@@ -56,7 +56,7 @@ function Shop() {
 					
 				</div>
 				);
-				incart.append({id:productId});
+				setIncart([...incart, {id: productId}]);
 				} else {
 					openmodal('Ошибка: ' + response.message);
 				}

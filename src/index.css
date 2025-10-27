@@ -100,7 +100,7 @@ h1 {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-input, .buy, button {
+input, .buy, button, #buybut{
 	background: rgba(255, 255, 255, 0.2);
 	backdrop-filter: blur(1px); 
 	border: 2px solid rgba(255, 255, 255, 0.3);
@@ -116,7 +116,7 @@ button:hover, #s2:hover{
 	transform: scale(1.02);
 	cursor: pointer;
 }
-input:hover, input:focus, .buy:hover, button:hover {
+input:hover, input:focus, .buy:hover, button:hover, #buybut:hover {
 	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
 	border: 2px solid rgba(0,255,150,0.4);
 	outline: none;

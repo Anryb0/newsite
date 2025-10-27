@@ -35,7 +35,20 @@
 	$stmt->execute();
 	$result = $stmt->get_result();
 	$row = $result->fetch_assoc();
-	echo json_encode(['success'=>true,'info'=>$info,'data'=>$data,'name'=>$row['name'],'id'=>$row['id']]);
 	$stmt->close();
+	if(isset($_SESSION['id'])){
+		$stmt = $conn->prepare('select q from shop_cart where product_id = ? and user_id = ? and order_id is null');
+		$stmt->bind_param('ii',$art,$_SESSION['id']);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		if($result->num_rows == 0){
+			$incart = 0;
+		}
+		else{$incart = 1;}
+	}
+	else{
+		$incart = 0;
+	}
+	echo json_encode(['success'=>true,'info'=>$info,'data'=>$data,'name'=>$row['name'],'id'=>$row['id'],'incart'=>$incart]);
 	$conn->close();
 ?>

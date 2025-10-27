@@ -12,10 +12,11 @@ function Search() {
 	const[results,setResults] = useState(null);
 	const[show,setShow] = useState(null);
 	const[error,setError] = useState(null);
+	const[err,setErr] = useState(false);
 	const[closing,setClosing] = useState(false);
 	const[props, setProps] = useState(null);
 	const queryParams = new URLSearchParams(location.search);
-	const query = queryParams.get('q');
+	const[query,setQuery] = useState(queryParams.get('q'));
 	useEffect(() => {
 		if(query.length == 0){
 			setNo(true);
@@ -32,19 +33,19 @@ function Search() {
 					let response = JSON.parse(xhr.responseText);
 					if(response.success){
 						if(response.data.length == 0){
-							openmodal('По вашему запросу ничего не найдено');
+							openmodal('По вашему запросу ничего не найдено', false);
 							setNo(true);
 						}
 						setResults(response.data);
 						setProps(response.allprops);
 					}
 					else{
-						openmodal(response.message);
+						openmodal(response.message, true);
 						setNo(true);
 					}
 				}
 				else{
-					openmodal('Ошибка ' + xhr.status);
+					openmodal('Ошибка ' + xhr.status, true);
 					setNo(true);
 				}
 				setLoading(false);
@@ -58,22 +59,23 @@ function Search() {
 			setClosing(false);
 		}, 300);
 	}
-	function openmodal(t){
+	function openmodal(t, err){
 		setError(t);
+		setErr(err);
 		setShow(true);
 	}
 	return (
 		<>
 			<Header name='Computer shop' search={true} />
 				<main>
-					{show && (<Erwin text={error} closing={closing} closemodal={closemodal} />)}
+					{show && (<Erwin text={error} closing={closing} closemodal={closemodal} error={err}/>)}
 					{loading ? (	
 						<div className='spinner'></div>
 						) : no ? (
 							<p id='c3'><Link to='../' className='buy' id ='toback'>На главную</Link></p>
 						) : (
 							<>
-								<p id='toptext'></p>
+								<p id='toptext'>Результаты поиска по запросу «{query}»  <span id='q'>{results.length}</span></p>
 								<div id='elements'>
 										{results.map(item => {
 											let pstr = '';

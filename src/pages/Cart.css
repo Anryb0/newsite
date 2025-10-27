@@ -23,10 +23,52 @@
 .cartpic {
 	margin: 0 10px 0 5px;
 	width: 50px;
+	max-height: 45px;
 }
 .cartprice {
 	float: right;
 }
+.j {
+	margin: 0 7px;
+	font-size: 22px; 
+}
+.j, #cartq {
+	-webkit-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none;     
+    user-select: none;    
+}
+.j:hover {
+	color: grey;
+	cursor: pointer;
+}
 .cartname{
 	vertical-align: text-bottom;
+}
+.cartprice{
+	display: grid;
+	grid-template-columns: 50px 50px 25px 100px;
+	justify-items: end;
+}
+#sum {
+	width: 96%;
+	text-align: right;
+	font-size: 16px;
+}
+#end {
+	margin-left: 10px;
+	font-size: 16px;
+}
+#v {
+	font-size: 16px;
+}
+hr, #cartheader{
+	width: 95%;
+	margin: 0 auto;
+}
+#cartheader{
+	display: grid;
+    grid-template-columns: 100px 100px 1fr 150px 100px;
+    justify-items: center;
+	font-weight: bold;
 }

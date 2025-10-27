@@ -9,7 +9,10 @@ function Erwin(props){
 				? `modal-out ${props.error ? 'error' : 'message'}`
 				: `${props.error ? 'error' : 'message'}`}
 			>
-				<h3>Ошибка<span id='closebutton' onClick={() => {props.closemodal()}}>×</span></h3>
+				<h3>
+  {props.error ? "Ошибка" : "Сообщение"}
+  <span id='closebutton' onClick={() => {props.closemodal()}}>×</span>
+</h3>
 				<p>{props.text}</p>
 			</div>
 		</div>
