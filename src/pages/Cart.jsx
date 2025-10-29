@@ -107,6 +107,33 @@ function Cart(){
 			}
 		}
 	}
+	function makeorder(shop){
+		openmodal(
+		<div className='spinner'></div>
+		, false);
+		let formData = new FormData();
+		formData.append('selectedlocation',shop);
+		let xhr = new XMLHttpRequest();
+		xhr.open('POST','http://94.183.234.114/server/makeorder.php');
+		xhr.send(formData);
+		xhr.onload = function(){
+			if(xhr.status == 200){
+				let response = JSON.parse(xhr.responseText);
+				if(response.success){
+					openmodal('Заказ успешно создан. Перенаправление...', false);
+					setTimeout(function() {
+					  navigate('/order?id=' + response.order);
+					}, 500);
+				}
+				else{
+					openmodal(response.message, true);
+				}
+			}
+			else{
+				openmodal('Ошибка ' + xhr.status, true);
+			}
+		}
+	}
 
 	useEffect(() => {
 		let xhr = new XMLHttpRequest();
@@ -134,6 +161,7 @@ function Cart(){
 								} else {
 									setProducts(response2.data);
 									setNo(false); 
+									loadavail(shop);
 									if(refresh == 0){
 										let xhr3 = new XMLHttpRequest();
 										xhr3.open('POST','http://94.183.234.114/server/getshops.php');
@@ -141,7 +169,6 @@ function Cart(){
 										xhr3.onload = function(){
 											if(xhr3.status == 200){
 												let response3 = JSON.parse(xhr3.responseText);
-												console.log(response3);
 												if(response3.success){
 													setShops(response3.data);
 													loadavail(shop);
@@ -218,7 +245,7 @@ function Cart(){
   </select>
 </p>
 {availload ? (<div className='spinner'></div>) : !avail ? (<p className='red'>Нет в наличии в этом магазине</p>) : (<p className='green'>Есть в наличии в этом магазине</p>)}
-<p id='sum'><b>Итого: {totalSum} RUB</b><button id='end' className='buy' disabled={!avail}>Оформить заказ</button></p>
+<p id='sum'><b>Итого: {totalSum} RUB</b><button id='end' className='buy' onClick={() => {makeorder(shop)}} disabled={!avail}>Оформить заказ</button></p>
 					</>
 				) : (
 					<div>Нет товаров в корзине</div>

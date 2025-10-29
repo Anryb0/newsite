@@ -6,6 +6,7 @@ import Profile from './pages/Profile.jsx';
 import Product from './pages/Product.jsx';
 import Search from './pages/Search.jsx';
 import Cart from './pages/Cart.jsx';
+import Order from './pages/Order.jsx';
 
 function App() {	
   return (
@@ -18,6 +19,7 @@ function App() {
 			<Route path="/search" element={<Search />} />
 			<Route path="/product" element={<Product />} />
 			<Route path="/cart" element={<Cart />} />
+			<Route path="/order" element={<Order />} />
 		</Routes>
 	</Router>
   );

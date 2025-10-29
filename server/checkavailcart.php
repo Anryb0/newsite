@@ -47,5 +47,6 @@
 			$marker = false;
 		}
 	}
+	$conn->close();
 	echo json_encode(['success'=>true,'marker'=>$marker]);
 ?>

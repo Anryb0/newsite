@@ -78,10 +78,14 @@ hr, #cartheader{
 }
 select{
 	width: 70%;
+	outline: none;
 }
 .red{
 	color: red;
 }
 .green{
 	color: green;
+}
+option {
+	background: rgb(255 255 255 / 20%);
 }
