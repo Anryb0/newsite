@@ -14,6 +14,10 @@ function Cart(){
 	const[no,setNo] = useState(false);
 	const[error,setError] = useState('');
 	const[err,setErr] = useState(false);
+	const[shops,setShops] = useState(null);
+	const[shop, setShop] = useState(1);
+	const[avail,setAvail] = useState(false);
+	const[availload, setAvailload] = useState(true);
 	const [refresh, setRefresh] = useState(0);
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -74,6 +78,35 @@ function Cart(){
 			openmodal('Ошибка сети', true);
 		}
 	}
+	function loadavail(shop){
+		setAvailload(true);
+		if(shop == 0){
+			return false;
+		}
+		else{
+			setShop(shop);
+			let formData = new FormData();
+			formData.append('selectedlocation', shop);
+			let xhr = new XMLHttpRequest();
+			xhr.open('POST','http://94.183.234.114/server/checkavailcart.php');
+			xhr.send(formData);
+			xhr.onload = function() {
+				if(xhr.status == 200){
+					let response = JSON.parse(xhr.responseText);
+					if(response.success){
+						setAvail(response.marker);
+						setAvailload(false);
+					}
+					else{
+						openmodal(response.message, true);
+					}
+				}
+				else{
+					openmodal('Ошибка ' + xhr.status, true);
+				}
+			}
+		}
+	}
 
 	useEffect(() => {
 		let xhr = new XMLHttpRequest();
@@ -101,6 +134,27 @@ function Cart(){
 								} else {
 									setProducts(response2.data);
 									setNo(false); 
+									if(refresh == 0){
+										let xhr3 = new XMLHttpRequest();
+										xhr3.open('POST','http://94.183.234.114/server/getshops.php');
+										xhr3.send();
+										xhr3.onload = function(){
+											if(xhr3.status == 200){
+												let response3 = JSON.parse(xhr3.responseText);
+												console.log(response3);
+												if(response3.success){
+													setShops(response3.data);
+													loadavail(shop);
+												}
+												else{
+													openmodal(response3.message, true);
+												}
+											}
+											else{
+												openmodal('Ошибка ' + xhr3.status, true);
+											}
+										}
+									}
 								}
 							} else {
 								openmodal(response2.message, true);
@@ -156,7 +210,15 @@ function Cart(){
 							</div>
 						))}
 					</div>
-					<p id='sum'><b>Итого: {totalSum} RUB</b><button id='end' className='buy'>Оформить заказ</button></p>
+					<p id='shopselect'>Выберите магазин: 
+  <select onChange={(e) => {loadavail(e.target.value)}}>
+    {Array.isArray(shops) && shops.length > 0 ? (shops.map((item) => (
+      <option key={item.id} value={item.id}>{item.address} - {item.name}</option>
+    ))) : (<option value={0}>Загрузка...</option>)}
+  </select>
+</p>
+{availload ? (<div className='spinner'></div>) : !avail ? (<p className='red'>Нет в наличии в этом магазине</p>) : (<p className='green'>Есть в наличии в этом магазине</p>)}
+<p id='sum'><b>Итого: {totalSum} RUB</b><button id='end' className='buy' disabled={!avail}>Оформить заказ</button></p>
 					</>
 				) : (
 					<div>Нет товаров в корзине</div>

@@ -72,3 +72,16 @@ hr, #cartheader{
     justify-items: center;
 	font-weight: bold;
 }
+#shopselect {
+	width: 100%;
+	text-align: center;
+}
+select{
+	width: 70%;
+}
+.red{
+	color: red;
+}
+.green{
+	color: green;
+}

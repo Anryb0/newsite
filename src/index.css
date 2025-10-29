@@ -100,7 +100,7 @@ h1 {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-input, .buy, button, #buybut{
+input, .buy, button, #buybut, select{
 	background: rgba(255, 255, 255, 0.2);
 	backdrop-filter: blur(1px); 
 	border: 2px solid rgba(255, 255, 255, 0.3);

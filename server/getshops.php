@@ -9,7 +9,7 @@
 			'id' => $row['id'],
 			'name' => $row['name'],
 			'address' => $row['address']
-		]
+		];
 	}
 	echo json_encode(['success'=> true,'data'=>$data]);
 	
