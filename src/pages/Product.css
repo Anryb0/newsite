@@ -15,7 +15,7 @@
 	max-width: 500px;
 	height: 400px;
 }
-#prodcart, #prodprice, #secondline {
+#prodcart, #prodprice, #secondline,  #thirdline{
 	background: rgba(255, 255, 255, 0.15);
 	backdrop-filter: blur(1px); 
 	border: 2px solid rgba(255, 255, 255, 0.3);
@@ -25,7 +25,7 @@
 	text-align: center;
 	animation: modalIn 0.35s forwards;
 }
-#secondline {
+#secondline, #thirdline {
 	text-align: left;
 	margin-top: 20px;
 }
@@ -60,4 +60,56 @@
 #buybut{
 	background: rgba(0,255,150,0.2);
 	padding: 5px 15px;
+}
+.option {
+	text-align: left;
+	padding: 3px 10px;
+	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+	outline: none;
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(1px); 
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-radius: 9px;
+	margin: 5px 0;
+}
+#options {
+  width: 90%;
+  margin: 0 auto;
+  height: 300px;
+  overflow: auto;
+  
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+#options::-webkit-scrollbar {
+  display: none;
+}
+.o2 {
+	float: right;
+}
+.o1{
+	display: inline-block;
+	max-width: 200px;
+	max-height: 20px;
+	overflow: hidden;
+}
+.option:hover, .selected{
+	cursor: pointer;
+	background: rgba(0,255,150,0.17);
+	border-radius: 11px;
+	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
+	border: 2px solid rgba(0,255,150,0.4);
+}
+.big{
+	font-size: 16px;
+}
+#addr{
+	width: 90%;
+	margin: 0 auto;
+	text-align: left;
+}
+#descr{
+	width: 96%;
+	margin: 0 auto;
 }

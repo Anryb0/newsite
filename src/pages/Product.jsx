@@ -15,7 +15,9 @@ function Product(){
 		const[closing,setClosing] = useState(false);
 		const[error,setError] = useState('');
 		const[err,setErr] = useState(false);
+		const[avail,setAvail] = useState([]);
 		const[refresh,setRefresh] = useState(0);
+		const[selectedoption,setselectedoption] = useState('выберите магазин');
 		const navigate = useNavigate();
 		const[incart,setIncart] = useState(null);
 		const location = useLocation();
@@ -59,6 +61,21 @@ function Product(){
 								setProps(response.data);
 								setWay(arr);
 								setIncart(response.incart);
+								let xhr2 = new XMLHttpRequest();
+								xhr2.open('POST','http://94.183.234.114/server/checkavail.php');
+								xhr2.send(formData);
+								xhr2.onload = function(){
+									if(xhr2.status == 200){
+										let response2 = JSON.parse(xhr2.responseText);
+										if(response2.success){
+											setAvail(response2.data);
+										}
+										else{openmodal(response2.message, true)}
+									}
+									else{
+										openmodal('Ошибка '+ xhr.status, true);
+									}
+								}
 							}
 						}
 						else{
@@ -131,15 +148,28 @@ function Product(){
 												</button>
 											)}
 											<div id='avail'>
-												<p>Наличие в магазинах:</p>
-												<ul>
-													<li>Магаз - 1 шт</li>
-												</ul>
+												<div id='options'>
+												<p className='big'>Наличие в магазинах:</p>
+												{
+													avail.map((item)=> {
+														return(
+															<div className={selectedoption == item.location ? 'option selected' : 'option'} onClick={() => {setselectedoption(item.location)}}><span className='o1'>{item.location.split(',')[0].trim()} - {item.name}</span><span className='o2'>{item.quantity} шт.</span></div>
+														)
+													})
+												}
+												</div>
 											</div>
+											<div  id='addr'><p>Адрес: {selectedoption}</p></div>
 										</div>
 									</div>
 									<div id='secondline'>
-										<h3>Характеристики</h3>
+										<h3>Описание</h3>
+											<div id='descr'>
+												{product.descr}
+											</div>
+									</div>
+								<div id='thirdline'>
+									<h3>Характеристики</h3>
 										<ul>
 										{	props.length == 0 ? (<p>Пока данных нет</p>) : (<div></div>)}
 										{
@@ -150,7 +180,7 @@ function Product(){
 											})
 										}
 										</ul>
-									</div>
+								</div>
 								</div>
 							</>
 						) : (
