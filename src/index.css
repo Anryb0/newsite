@@ -5,11 +5,11 @@ html {
 }
 body {
 	margin: 0;
-	background: url('../glass.jpg') no-repeat center center fixed;
-	background-size: cover;
+	background: rgb(176 208 212);
+	min-width: 1070px;
 }
 main {
-	margin: 0 auto;
+	margin: 70px auto;
 	max-width: 1050px;
 	width: 95%;
 }
@@ -51,7 +51,7 @@ a:hover {
 	backdrop-filter: blur(2px);
 }
 #modal-el {
-	background-color: rgba(255, 255, 255, 0.62);
+	background-color: rgba(176, 208, 212, 0.75);
     padding: 15px;
     border: 2px solid rgba(255,255,255,0.2);
     width: 60%;
@@ -143,4 +143,13 @@ h3 {
 }
 #c3 {
 	text-align: center;
+}
+#header{
+	top: 0;
+	position: fixed;
+	width: 100%;
+	backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .8);
+    height: 55px;
+    z-index: 2;
 }

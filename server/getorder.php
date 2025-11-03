@@ -9,7 +9,7 @@
 		$conn->close();
 		exit;
 	}
-	$stmt = $conn->prepare('select s.status, s.time, l.name, l.address from shop_orders s left join shop_locations l on l.id = s.shop_id where id = ?');
+	$stmt = $conn->prepare('select s.status, s.time, s.user_id, l.name, l.address from shop_orders s left join shop_locations l on l.id = s.shop_id where s.id = ?');
 	$stmt->bind_param('i', $_POST['id']);
 	$stmt->execute();
 	$result=$stmt->get_result();
@@ -40,7 +40,11 @@
 			'photo_url' => $row['photo_url']
 		];
 	}
-	echo json_encode(['success'=>true,'data'=> $data, 'order'=>$order]);
+	$sum = 0;
+	foreach($data as $product){
+		$sum = $sum + ($product['price'] * $product['q']);
+	}
+	echo json_encode(['success'=>true,'data'=> $data, 'order'=>$order, 'sum'=>$sum]);
 	$stmt->close();
 	$conn->close();
 	exit;

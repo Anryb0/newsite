@@ -15,17 +15,17 @@
 	max-width: 500px;
 	height: 400px;
 }
-#prodcart, #prodprice, #secondline,  #thirdline{
+#prodcart, #prodprice, #secondline,  #thirdline, #fourthline{
 	background: rgba(255, 255, 255, 0.15);
 	backdrop-filter: blur(1px); 
 	border: 2px solid rgba(255, 255, 255, 0.3);
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-	border-radius: 9px;
+	border-radius: 15px;
 	padding: 10px;
 	text-align: center;
 	animation: modalIn 0.35s forwards;
 }
-#secondline, #thirdline {
+#secondline, #thirdline, #fourthline {
 	text-align: left;
 	margin-top: 20px;
 }

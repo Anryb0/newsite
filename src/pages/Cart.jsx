@@ -227,12 +227,13 @@ function Cart(){
 						{products.map((item) => (
 							<div className='cartelement' key={item.id}>
 								<img src={'prodimg/' + item.photo_url + '.png'} alt={item.name} className='cartpic'/>
-								<span className='cartname'>{item.name}</span>
+								<Link to={'../product?art='+item.product_id} className='cartname'>{item.name}</Link>
 								<span className='cartprice'>
+									{availload ? (<><div></div><div></div><div></div><div className='spinner small'></div></>) : (<>
 									<span id='cartq'>{item.q}</span>
 									<span id='pluscart' className='j' onClick={() => managecart(true, item.product_id)}>+</span>
 									<span id='minuscart' className='j' onClick={() => managecart(false, item.product_id)}>-</span>
-									<span id='v'>{item.price *item.q} RUB</span>
+									<span id='v'>{item.price *item.q} RUB</span></>)}
 								</span>
 							</div>
 						))}
@@ -244,8 +245,35 @@ function Cart(){
     ))) : (<option value={0}>Загрузка...</option>)}
   </select>
 </p>
-{availload ? (<div className='spinner'></div>) : !avail ? (<p className='red'>Нет в наличии в этом магазине</p>) : (<p className='green'>Есть в наличии в этом магазине</p>)}
-<p id='sum'><b>Итого: {totalSum} RUB</b><button id='end' className='buy' onClick={() => {makeorder(shop)}} disabled={!avail}>Оформить заказ</button></p>
+{availload ? (
+  <div className="spinner"></div>
+) : !avail ? (
+  <>
+    <p className="red">Нет в наличии в этом магазине</p>
+    <p id="sum">
+      <b>Итого: {totalSum} RUB</b>
+      <button id="end" className="buy" disabled>
+        Оформить заказ
+      </button>
+    </p>
+  </>
+) : (
+  <>
+    <p className="green">Есть в наличии в этом магазине</p>
+    <p id="sum">
+      <b>Итого: {totalSum} RUB</b>
+      <button
+        id="end"
+        className="buy"
+        onClick={() => {
+          makeorder(shop);
+        }}
+      >
+        Оформить заказ
+      </button>
+    </p>
+  </>
+)}
 					</>
 				) : (
 					<div>Нет товаров в корзине</div>

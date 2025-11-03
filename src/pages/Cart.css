@@ -17,8 +17,16 @@
     padding: 5px;
     line-height: 50px;
 	animation: modalIn 0.35s forwards;
+	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s; 
 	margin: 5px auto;
 	font-weight: bold;
+}
+.cartelement:hover{
+	text-decoration: none;
+	color: #333;
+	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
+	border: 2px solid rgba(0,255,150,0.4);
+	outline: none;
 }
 .cartpic {
 	margin: 0 10px 0 5px;
@@ -82,10 +90,16 @@ select{
 }
 .red{
 	color: red;
+	font-weight: bold;
 }
 .green{
 	color: green;
+	font-weight: bold;
 }
 option {
 	background: rgb(255 255 255 / 20%);
+}
+.small {
+	width: 18px;
+	height: 18px;
 }

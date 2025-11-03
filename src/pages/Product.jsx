@@ -13,6 +13,8 @@ function Product(){
 		const[props,setProps] = useState(null);
 		const[way,setWay] = useState([]);
 		const[closing,setClosing] = useState(false);
+		const[revstatus,setRevstatus] = useState(null);
+		const[revmessage,setRevmessage] = useState(null);
 		const[error,setError] = useState('');
 		const[err,setErr] = useState(false);
 		const[avail,setAvail] = useState([]);
@@ -35,6 +37,34 @@ function Product(){
 			setError(t);
 			setErr(err);
 			setShow(true);
+		}
+		function checkr(art){
+			let formData = new FormData();
+			formData.append('id', art);
+			formData.append('mode', 0);
+			let xhr = new XMLHttpRequest();
+			xhr.open('POST','http://94.183.234.114/server/managereviews.php');
+			xhr.send(formData);
+			xhr.onload = function(){
+				let response = JSON.parse(xhr.responseText);
+				if(xhr.status == 200){
+					if(response.success){
+						setRevstatus(response.status);
+						setRevmessage(response.message);
+					}
+					else{openmodal(response2.message, true)}
+				}
+				else{
+					openmodal('Ошибка соединения '+ xhr.status, true);
+				}	
+			}
+		}
+		function addreview(){
+			openmodal(
+				<p>типа форма</p>
+			
+			
+			)
 		}
 	
 		useEffect(() => {
@@ -69,6 +99,7 @@ function Product(){
 										let response2 = JSON.parse(xhr2.responseText);
 										if(response2.success){
 											setAvail(response2.data);
+											checkr(art);
 										}
 										else{openmodal(response2.message, true)}
 									}
@@ -180,6 +211,11 @@ function Product(){
 											})
 										}
 										</ul>
+								</div>
+								<div id='fourthline'>
+									<h3>Отзывы</h3>{
+										revstatus == 0 ? (<p>Войдите в аккаунт чтобы оставить отзыв</p>) : revstatus == 1 ? (<button onClick={() => {addreview()}}><b>Добавить отзыв</b></button>) : (<p>Мой отзыв:</p>)
+									}
 								</div>
 								</div>
 							</>
