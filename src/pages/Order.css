@@ -1,0 +1,29 @@
+.orderprice {
+	float: right;
+	display: grid;
+	grid-template-columns: 40px 100px;
+}
+#orderheader{
+	display: grid;
+    grid-template-columns: 50px 100px 100px 1fr 80px 120px;
+    justify-items: start;
+    font-weight: 700;
+}
+.orderprop{
+	font-size: 15px;
+}
+#sumo{
+	width: 96%;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: right;
+}
+.cancel {
+	background: rgba(255, 122, 122, 0.3);
+	font-weight: bold;
+}
+.cancel:hover{
+	box-shadow: 0 4px 25px 0 rgba(255, 122, 122, 0.3);
+	border: 2px solid rgba(255, 122, 122, 0.3);
+	outline: none;
+}

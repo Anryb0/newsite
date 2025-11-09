@@ -1,0 +1,45 @@
+#maingrid {
+    display: grid;
+    grid-template-columns: 1fr 300px 300px 1fr;
+    text-align: center;
+    margin: 10px 0;
+}
+#l1, #r2 {
+    background: white;
+    padding: 5px;
+    border-radius: 10px;
+    padding: 5px;
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(1px); 
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	animation: modalIn 0.35s forwards;
+}
+#l1 {
+    margin-right: 10px;
+}
+#r2 {
+    margin-left: 10px;
+}
+#l1 p, #r2 p {
+    margin-bottom: 7px;
+}
+.lform, .rform {
+    margin: 5px;
+}
+
+#erwin-el {
+	background-color: rgba(199, 58, 58, 0.2);	
+}
+@media (max-width: 700px) {
+    #maingrid {
+		display: grid;
+		grid-template-columns: 1fr;
+		text-align: center;
+		margin: 10px 0;
+	}
+	#l1,#r2 {
+		margin: 5px auto;
+		width: 90%;
+	}
+}

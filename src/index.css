@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+html {
+	font-size: 14px;
+	font-family: "Noto Sans", sans-serif;
+}
+body {
+	margin: 0;
+	background: rgb(176 208 212);
+	min-width: 1070px;
+}
+main {
+	margin: 70px auto;
+	max-width: 1050px;
+	width: 95%;
+}
+@keyframes modalIn {
+    0% { opacity: 0;
+		transform: scale(0.9);
+	}
+    100%{ opacity: 1; 
+	transform: scale(1);}
+}
+@keyframes modalOut {
+    0% { opacity: 1;
+		transform: scale(1);
+	}
+    100%{ opacity: 0; 
+	transform: scale(0.9);}
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: underline;
+}
+#modal {
+	text-align: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: modalIn 0.35s forwards;
+	align-items: center;
+    align-content: center;
+    justify-content: center;
+	backdrop-filter: blur(2px);
+}
+#modal-el {
+	background-color: rgba(176, 208, 212, 0.75);
+    padding: 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    width: 60%;
+	max-width: 500px;
+	min-width: 300px;
+    border-radius: 15px;
+    margin: auto;
+    height: auto;
+	text-align: left;
+	display: block;
+}
+#modal-el p {
+	margin: 5px auto;
+	width: 96%;
+}
+#closebutton {
+	float: right;
+	font-weight: bold;
+	font-size: 28px;
+}
+#closebutton:hover {
+	color: grey;
+	cursor: pointer;
+}
+h1 {
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+.modal-out{
+	animation: modalOut 0.25s forwards; 
+}
+#modal.modal-out{
+	animation: modalOut 0.25s forwards; 
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0,0,0,0.2);
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+input, .buy, button, #buybut, select{
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(1px); 
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 9px;
+	padding: 3px 5px;
+	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s; 
+}
+button {
+	background: rgba(0,255,150,0.2);
+}
+button:hover, #s2:hover{
+	transform: scale(1.02);
+	cursor: pointer;
+}
+input:hover, input:focus, .buy:hover, button:hover, #buybut:hover {
+	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
+	border: 2px solid rgba(0,255,150,0.4);
+	outline: none;
+}
+.but, .buy {
+	font-weight: bold;
+	font-size: 14px;
+	background: rgba(0,255,150,0.2);
+	padding: 4px 10px;
+}
+.buy {
+	padding: 4px 30px;
+	margin-right: 5px;
+}
+h3 {
+	margin: 10px;
+	font-size: 20px;
+}
+#modal-el.error {
+	background: rgba(255, 92, 92, 0.16);
+}
+#toback {
+	margin: 10px;
+}
+#c3 {
+	text-align: center;
+}
+#header{
+	top: 0;
+	position: fixed;
+	width: 100%;
+	backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .8);
+    height: 55px;
+    z-index: 2;
+}
+.glassy {
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(1px); 
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	padding: 10px;
+	animation: modalIn 0.35s forwards;
+}
+.redback{
+	background: #ff5a5af2
+}
+.redback:hover{
+	border: 2px solid rgba(250, 128, 114, 0.2);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+.q {
+	color: grey;
+}
+#delrev{
+	float: right;
+}
+.userpic{
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+}
+.grey{
+	color: grey;
+}
+.revpic{
+	border-radius: 10px;
+}
+.userinfo {
+	vertical-align: 70%;
+	margin-left: 10px;
+}

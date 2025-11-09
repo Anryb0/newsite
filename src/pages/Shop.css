@@ -1,0 +1,35 @@
+.prodname{
+	font-weight: bold;
+}
+#toptext{
+	font-weight: bold;
+	font-size: 18px;
+}
+#q {
+	color: #777;
+}
+.prod img{
+	border-radius: 0px;
+	max-width: 220px;
+	max-height: 180px;
+}
+.prod:hover {
+	text-decoration: none;
+	cursor: pointer;
+	color: #333;
+}
+.prodname {
+	font-size: 15px;
+	height: 40px;
+}
+#pp {
+	font-weight: bold;
+	margin-right: 10px;
+}
+.buy:hover{
+	cursor: pointer;
+}
+.prodprops{
+	font-size: 13px;
+	color: grey;
+}

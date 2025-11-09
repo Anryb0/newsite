@@ -1,0 +1,21 @@
+h2 {
+	text-align: center;
+}
+#description{
+	width: 80%;
+	margin: 5px auto;
+	text-align: justify;
+	font-size: 16px;
+}
+#description img {
+	width: 340px;
+	margin: 7px auto;
+	height: 250px;
+	border-radius: 10px;
+}
+#gallery {
+	display: grid;
+	justify-content: space-around;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 320px));
+	grid-gap: 10px;
+}
