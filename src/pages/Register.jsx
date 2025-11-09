@@ -93,43 +93,45 @@ function Register() {
 					<Erwin text={error} closemodal={closemodal} closing={closing}/>
 				)
 			}
-			<div id='maingrid'>
-                <div></div>
-                <div id='l1'>
-                    <h3>Войти</h3>
-					<hr />
-                    <form className="lform" id='lform' onSubmit={login}>
-                        <div className="lform">
-                            <input type="text" name="llogin" value={logininfo.llogin} onChange={loginch} id="llogin" placeholder='Логин' required />
-                        </div>
-                        <div className="lform">
-                            <input type="password" name="lpass" value={logininfo.lpass} onChange={loginch} id="lpass" placeholder="Пароль" required />
-                        </div>
-                        <div className="lform">
-                            <input type="submit" value="Вход"  className="but" id='lb'/>
-                        </div>
-                    </form>
-                </div>
-                <div id='r2'>
-                    <h3>Зарегистрироваться</h3>
-					<hr />
-                    <form className="rform" id='rform' autoComplete="off" onSubmit={regist}>
-                        <div className="rform">
-                            <input type="text" name="rlogin" value={registerinfo.rlogin} onChange={regch} placeholder='Логин' autoComplete="off" required />
-                        </div>
-                        <div className="rform">
-                            <input type="password" name="rpass" value={registerinfo.rpass} onChange={regch} id="rpass" placeholder='Пароль' autoComplete="new-password" required />
-                        </div>
-                        <div className="rform">
-                            <input type="password" name="passcheck" value={registerinfo.passcheck} onChange={regch} id="passcheck" placeholder= 'Повторите пароль' autoComplete="new-password" required />
-                        </div>
-                        <div className="rform">
-                            <input type="submit" value="Регистрация" className="but" id='rb'/>
-                        </div>
-                    </form>
-                </div>
-                <div></div>
-            </div>
+			<main>
+				<div id='maingrid'>
+					<div></div>
+					<div id='l1'>
+						<h3>Войти</h3>
+						<hr />
+						<form className="lform" id='lform' onSubmit={login}>
+							<div className="lform">
+								<input type="text" name="llogin" value={logininfo.llogin} onChange={loginch} id="llogin" placeholder='Логин' required />
+							</div>
+							<div className="lform">
+								<input type="password" name="lpass" value={logininfo.lpass} onChange={loginch} id="lpass" placeholder="Пароль" required />
+							</div>
+							<div className="lform">
+								<input type="submit" value="Вход"  className="but" id='lb'/>
+							</div>
+						</form>
+					</div>
+					<div id='r2'>
+						<h3>Зарегистрироваться</h3>
+						<hr />
+						<form className="rform" id='rform' autoComplete="off" onSubmit={regist}>
+							<div className="rform">
+								<input type="text" name="rlogin" value={registerinfo.rlogin} onChange={regch} placeholder='Логин' autoComplete="off" required />
+							</div>
+							<div className="rform">
+								<input type="password" name="rpass" value={registerinfo.rpass} onChange={regch} id="rpass" placeholder='Пароль' autoComplete="new-password" required />
+							</div>
+							<div className="rform">
+								<input type="password" name="passcheck" value={registerinfo.passcheck} onChange={regch} id="passcheck" placeholder= 'Повторите пароль' autoComplete="new-password" required />
+							</div>
+							<div className="rform">
+								<input type="submit" value="Регистрация" className="but" id='rb'/>
+							</div>
+						</form>
+					</div>
+					<div></div>
+				</div>
+			</main>
 		<Footer />
 	</div>
 	)

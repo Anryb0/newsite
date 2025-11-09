@@ -153,3 +153,19 @@ h3 {
     height: 55px;
     z-index: 2;
 }
+.glassy {
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(1px); 
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	padding: 10px;
+	animation: modalIn 0.35s forwards;
+}
+.redback{
+	background: #ff5a5af2
+}
+.redback:hover{
+	border: 2px solid rgba(250, 128, 114, 0.2);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}

@@ -59,3 +59,9 @@
 #s1, #s2 {
 	padding: 5px 10px;
 } 
+#userp img{
+	width: 45px;
+    border-radius: 50%;
+    height: 45px;
+    margin-top: 5px;
+}

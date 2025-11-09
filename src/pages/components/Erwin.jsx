@@ -10,7 +10,7 @@ function Erwin(props){
 				: `${props.error ? 'error' : 'message'}`}
 			>
 				<h3>
-  {props.error ? "Ошибка" : "Сообщение"}
+  {props.header ? props.header : props.error ? "Ошибка" : "Сообщение"}
   <span id='closebutton' onClick={() => {props.closemodal()}}>×</span>
 </h3>
 				<p>{props.text}</p>

@@ -67,5 +67,25 @@
 		echo json_encode(['success'=>true]);
 		exit;
 	}
-	
+	if($_POST['mode'] == 1){
+		$stmt = $conn->prepare('select s.id, s.time, s.status, l.name, (select sum(c.price * c.q) from shop_cart c where order_id = s.id) as total_sum from shop_orders s left join shop_locations l on s.shop_id = l.id where s.user_id = ?');
+		$stmt->bind_param('i', $_SESSION['id']);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$orders = [];
+		while($row = $result->fetch_assoc()){
+			$orders[] = [
+				'id' => $row['id'],
+				'time' => $row['time'],
+				'status' => $row['status'],
+				'name' => $row['name'],
+				'total_sum' => $row['total_sum']
+			];
+		}
+		$stmt->close();
+		$conn->close();
+		echo json_encode(['success'=>true,'orders'=>$orders]);
+		exit;
+		
+	}
 ?>

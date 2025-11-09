@@ -1,3 +1,69 @@
 .logout {
 	float: right;
 }
+#profilegrid {
+	display: grid;
+	grid-template-columns: 250px 1fr;
+	grid-gap: 20px;
+	margin: 5px auto;
+	width: 90%;
+}
+#userorderheader {
+	display: grid;
+	font-weight: bold;
+	grid-template-columns: 100px 1fr 100px 150px 100px;
+	width: 95%;
+	margin: 5px auto;
+}
+#userorderlist{
+	display: grid;
+	grid-gap: 10px;
+	width: 95%;
+	max-height: 95%;
+	margin: 5px auto;
+	overflow: auto;
+	scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  max-height: 245px;
+}
+#userorderlist::-webkit-scrollbar {
+  display: none;
+}
+.userorder{
+	display: grid;
+	grid-template-columns: 100px 1fr 100px 150px 80px;
+	font-weight: bold;
+}
+button{
+	font-weight: bold;
+}
+hr{
+	width: 100%;
+}
+#userpic {
+	width: 200px;
+	height: 200px;
+}
+#userpicplace{
+	text-align: center;
+}
+#fileinput{
+	width: 200px;
+}
+.userorder:hover{
+	text-decoration: none;
+	box-shadow: 0 4px 25px 0 rgba(0,255,150,0.4);
+	border: 2px solid rgba(0,255,150,0.4);
+	outline: none;
+	transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s; 
+}
+#userpicplace, #userordersplace {
+	max-height: 320px;
+}
+#userpic{
+	border-radius: 50%;
+}
+#userreviews{
+	margin: 20px auto 0px auto;
+	width: 90%;
+}

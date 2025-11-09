@@ -61,7 +61,7 @@ function Header(props)
 				) : user ? (
 					<div id='l'>
 						{props.nocart ? (<div></div>) : (<Link className='lau' to="/cart">Корзина</Link>)}
-						<Link className='lau' to="/profile">{user.name}</Link>
+						<Link id='userp' to="/profile"><img src={'userpic/' + user.photo_url} /></Link>
 					</div>
 				) :	(
 					<div id='l'>

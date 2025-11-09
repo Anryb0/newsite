@@ -10,6 +10,7 @@ function Product(){
 		const[product,setProduct] = useState(null);
 		const[show,setShow] = useState(false);
 		const[no,setNo] = useState(false);
+		const[header,setHeader] = useState(false);
 		const[props,setProps] = useState(null);
 		const[way,setWay] = useState([]);
 		const[closing,setClosing] = useState(false);
@@ -33,9 +34,12 @@ function Product(){
 				setClosing(false);
 			}, 300);
 		}
-		function openmodal(t,err){
+		function openmodal(t,err, hr){
 			setError(t);
 			setErr(err);
+			if(hr){
+				setHeader(hr)
+			} else {setHeader(false)}
 			setShow(true);
 		}
 		function checkr(art){
@@ -61,9 +65,16 @@ function Product(){
 		}
 		function addreview(){
 			openmodal(
-				<p>типа форма</p>
-			
-			
+				<div>
+				<div id='rating'><span class="rating">
+                        <span className="star" data-rating="1" style='margin-left: 10px'>★</span><span className="star" data-rating="2">★</span><span className="star" data-rating="3">★</span><span className="star" data-rating="4">★</span><span className="star" data-rating="5">★</span>
+                        </span></div>
+				<p>Достоинства<input type='text' placeholder='необязательно' className='f' /></p>
+				<p>Недостатки<input type='text' placeholder='необязательно' className='f' /></p>
+				<p>Коментарий<input type='text' placeholder='обязательно' className='f'/></p>
+				<p>Прикрепить фото<input type='file' placeholder='необязательно' className='f'/></p>
+				<button onClick='sendreview'>Отправить</button>
+				</div>, false, 'Добавить отзыв'
 			)
 		}
 	
@@ -155,7 +166,7 @@ function Product(){
 			<>
 				<Header name='Computer shop' search={true} />
 					<main>
-					{show && (<Erwin text={error} closing={closing} closemodal={closemodal} error={err}/>)}
+					{show && (<Erwin text={error} closing={closing} closemodal={closemodal} error={err} header={header}/>)}
 					{
 						loading ? (
 							<div className='spinner'></div>
@@ -179,8 +190,13 @@ function Product(){
 												</button>
 											)}
 											<div id='avail'>
+											<p className='big'>Наличие в магазинах:</p>
+												<select id='shopfilt'>
+													<option>Все</option>
+													<option>В наличии</option>
+												</select>
+												<input type='text' placeholder='Поиск' />
 												<div id='options'>
-												<p className='big'>Наличие в магазинах:</p>
 												{
 													avail.map((item)=> {
 														return(
@@ -194,25 +210,27 @@ function Product(){
 										</div>
 									</div>
 									<div id='secondline'>
-										<h3>Описание</h3>
-											<div id='descr'>
+										<div id='descr'>
+											<h3>Описание</h3>
+											<div>
 												{product.descr}
 											</div>
+										</div>
+										<div id='props'>
+											<h3>Характеристики</h3>
+											<ul>
+											{	props.length == 0 ? (<p>Пока данных нет</p>) : (<div></div>)}
+											{
+												props.map((item)=> {
+													return(
+														<li>{item.name}: {item.val} {item.metrics}</li>
+													)
+												})
+											}
+											</ul>
+										</div>
 									</div>
 								<div id='thirdline'>
-									<h3>Характеристики</h3>
-										<ul>
-										{	props.length == 0 ? (<p>Пока данных нет</p>) : (<div></div>)}
-										{
-											props.map((item)=> {
-												return(
-													<li>{item.name}: {item.val} {item.metrics}</li>
-												)
-											})
-										}
-										</ul>
-								</div>
-								<div id='fourthline'>
 									<h3>Отзывы</h3>{
 										revstatus == 0 ? (<p>Войдите в аккаунт чтобы оставить отзыв</p>) : revstatus == 1 ? (<button onClick={() => {addreview()}}><b>Добавить отзыв</b></button>) : (<p>Мой отзыв:</p>)
 									}
