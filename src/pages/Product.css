@@ -135,3 +135,43 @@
 .f{
 	width: 100%;
 }
+.rating {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star.select {
+    color: #ff8f00;
+}
+
+.star:hover {
+    color: #ff8f00;
+}
+#thirdline div, #fourthline div{
+	width: 95%;
+	margin: 0 auto;
+	font-weight: bold;
+}
+#sendrev {
+	margin-right: 5px;
+}
+.review-rating.star:hover{
+	color:white;
+}
+.review-rating{
+	float:right;
+}
+.order{
+	margin-bottom: 15px;
+}
+#completerating{
+	float: right;
+}

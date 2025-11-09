@@ -19,12 +19,10 @@ function Profile(){
 	const fileInputRef = useRef(null);
 	const[isUploading, setIsUploading] = useState(false);
 	const [selectedFile, setSelectedFile] = useState(null);
-    const [uploadProgress, setUploadProgress] = useState(0);
 	
 	const handleFileSelect = (event) => {
         const file = event.target.files[0];
         setSelectedFile(file);
-		console.log(file)
     };
 	
 	function logout(){
@@ -56,13 +54,6 @@ function Profile(){
 		formData.append('image', selectedFile);
 		let xhr = new XMLHttpRequest();
 		setIsUploading(true);
-        setUploadProgress(0);
-		xhr.upload.addEventListener('progress', (event) => {
-            if (event.lengthComputable) {
-                const percentComplete = (event.loaded / event.total) * 100;
-                setUploadProgress(Math.round(percentComplete));
-            }
-        });
 		xhr.open('POST','http://94.183.234.114/server/uploaduserpic.php');
 		xhr.send(formData);
 		xhr.onload = function(){
@@ -155,11 +146,12 @@ function Profile(){
                                 </div>
                             </div>
                         </div>
-						<div>
+						{/*
+						<div id='userr'>
 							<div id='userreviews' className='glassy'>
 								<h3>Мои отзывы</h3>
 							</div>
-						</div>
+						</div> */}
                     </>
                 )}
             </main>
